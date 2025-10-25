@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sistem Informasi Koperasi Sejahtera</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+    <style>
+        /* Reset dan Font */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            color: #2e2e2e;
+            background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+            min-height: 100vh;
+            scroll-behavior: smooth;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #43cea2, #185a9d);
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+            box-shadow: 0 6px 15px rgba(24, 90, 157, 0.3);
+            border-bottom-left-radius: 60% 20%;
+            border-bottom-right-radius: 60% 20%;
+            margin-bottom: 40px;
+        }
+        header h1 {
+            font-size: 3rem;
+            font-weight: 600;
+        }
+
+        /* Navbar */
+        nav {
+            background: #ffffffcc;
+            backdrop-filter: saturate(180%) blur(10px);
+            padding: 15px 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        nav a {
+            text-decoration: none;
+            color: #185a9d;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 10px 25px;
+            border-radius: 30px;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            background: #185a9d;
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1573497019367-39c146a4cb49?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
+            color: white;
+            text-align: center;
+            padding: 120px 20px;
+            border-radius: 0 0 80px 80px;
+            box-shadow: inset 0 0 100px rgba(0,0,0,0.3);
+        }
+        .hero h2 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1100px;
+            margin: 0 auto 60px;
+            padding: 0 25px;
+        }
+        section {
+            margin-bottom: 60px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease;
+        }
+        section.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 35px;
+            box-shadow: 0 12px 25px rgba(33, 150, 243, 0.1);
+            margin-bottom: 30px;
+        }
+        .card h2 {
+            color: #185a9d;
+            margin-bottom: 18px;
+            font-size: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #185a9d;
+            color: white;
+            padding: 14px 32px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background: #43cea2;
+        }
+
+        /* Galeri */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .gallery img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Testimoni */
+        .testimoni-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .testimoni {
+            flex: 1 1 300px;
+            background: #e0f7fa;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        }
+        .testimoni p {
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        .testimoni h4 {
+            text-align: right;
+            color: #00796b;
+        }
+
+        /* Form Kontak */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        input, textarea {
+            padding: 12px 15px;
+            border: 1.5px solid #ccc;
+            border-radius: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            resize: none;
+        }
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #185a9d;
+        }
+
+        /* Footer */
+        footer {
+            background: #185a9d;
+            color: white;
+            text-align: center;
+            padding: 25px 20px;
+            border-top-left-radius: 30px;
+            border-top-right-radius: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sistem Informasi Koperasi Sejahtera</h1>
+        <p>Menyediakan informasi lengkap dan ramah pengguna tentang koperasi kami</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#tentang">Tentang Kami</a></li>
+            <li><a href="#produk">Produk</a></li>
+            <li><a href="#galeri">Galeri</a></li>
+            <li><a href="#testimoni">Testimoni</a></li>
+            <li><a href="#kontak">Kontak</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <h2>Bersama, Kita Sejahtera</h2>
+        <p>Koperasi modern dengan layanan digital untuk kesejahteraan bersama.</p>
+        <a href="#tentang" class="btn">Mulai Jelajahi</a>
+    </section>
+
+    <main>
+        <section id="tentang">
+            <div class="card">
+                <h2>Tentang Kami</h2>
+                <p>Koperasi Sejahtera berdiri sejak 2020, berfokus pada pemberdayaan ekonomi masyarakat melalui simpan pinjam dan pengembangan usaha berbasis teknologi.</p>
+            </div>
+        </section>
+
+        <section id="produk">
+            <div class="card">
+                <h2>Produk Kami</h2>
+                <ul>
+                    <li>Simpanan Pokok</li>
+                    <li>Pinjaman Usaha</li>
+                    <li>Simpanan Berjangka</li>
+                    <li>Asuransi Mikro</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="galeri">
+            <div class="card">
+                <h2>Galeri Kegiatan</h2>
+                <div class="gallery">
+                    <img src="https://images.unsplash.com/photo-1573166364451-1a9c79d5d8af?auto=format&fit=crop&w=600&q=80" alt="Kegiatan 1" />
+                    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=600&q=80" alt="Kegiatan 2" />
+                    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=600&q=80" alt="Kegiatan 3" />
+                </div>
+            </div>
+        </section>
+
+        <section id="testimoni">
+            <div class="card">
+                <h2>Testimoni Anggota</h2>
+                <div class="testimoni-container">
+                    <div class="testimoni">
+                        <p>“Saya merasa sangat terbantu dengan layanan pinjaman cepat dan transparan dari Koperasi Sejahtera.”</p>
+                        <h4>- Andi Pratama</h4>
+                    </div>
+                    <div class="testimoni">
+                        <p>“Bunga simpanannya kompetitif, pelayanan ramah, dan prosesnya mudah!”</p>
+                        <h4>- Siti Rahma</h4>
+                    </div>
+                    <div class="testimoni">
+                        <p>“Aplikasi sistem informasi ini sangat membantu saya dalam memantau simpanan dan pinjaman.”</p>
+                        <h4>- Dedi Santoso</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="kontak">
+            <div class="card">
+                <h2>Hubungi Kami</h2>
+                <form>
+                    <input type="text" placeholder="Nama Anda" required />
+                    <input type="email" placeholder="Email Anda" required />
+                    <textarea rows="4" placeholder="Pesan Anda"></textarea>
+                    <button type="submit" class="btn">Kirim Pesan</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Koperasi Sejahtera. Semua hak dilindungi. Desain oleh Najwa ✨</p>
+    </footer>
+
+    <script>
+        // Animasi saat scroll
+        const sections = document.querySelectorAll("section");
+        window.addEventListener("scroll", () => {
+            const trigger = window.innerHeight * 0.8;
+            sections.forEach(sec => {
+                const top = sec.getBoundingClientRect().top;
+                if (top < trigger) sec.classList.add("show");
+            });
+        });
+    </script>
+</body>
+</html>
